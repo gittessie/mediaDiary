@@ -1,0 +1,18 @@
+
+{{#each movies}}
+  <div class="card card-body mb-2">
+    <h3>{{title}} {{#if releaseYear}}({{releaseYear}}){{/if}}</h3> <a href="/movies/edit/{{id}}">Edit</a>
+    <p>Date Watched: {{date}}</p>
+    <p>Rating: {{rating}} </p>
+    <p>{{review}}</p>
+    <form method="post" action="/movies/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-link" value="Delete">
+    </form>
+  </div>
+  {{else}}
+    <div class="card card-body mb-2">
+      <p>You don't have any movie reviews yet!</p>
+    </div>
+  {{/each}}
+  <p class="text-center"><a href="/movies/add">Add a review.</a></p>

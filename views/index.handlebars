@@ -3,7 +3,10 @@
       <br/><br/><br/>
       <h1>{{title}}</h1>
       <p>Keep track of the movies you've seen, <br/>books you've read, <br/>concerts you've attended, <br/>and so much more!</p>
+      {{#if user}}
+      <p>Go to your <a href="/users">homepage</a> to get started.</p>
+      {{else}}
       <p><a href="/users/register">Sign up</a> or <a href="/users/login">sign in</a> to get started.</p>
-
+      {{/if}}
   </div>
 </div>

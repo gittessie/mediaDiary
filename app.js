@@ -15,7 +15,11 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Load routes
+const books = require('./routes/books');
+const concerts = require('./routes/concerts');
 const movies = require('./routes/movies');
+const plays = require('./routes/plays');
+const series = require('./routes/series');
 const users = require('./routes/users');
 
 // DB Config
@@ -78,13 +82,12 @@ app.get('/', (req, res)=>{
 	});
 });
 
-// About Route
-app.get('/about', (req, res)=>{
-	res.render('about');
-});
-
 // Use routes
+app.use('/books', books);
+app.use('/concerts', concerts);
 app.use('/movies', movies);
+app.use('/plays', plays);
+app.use('/series', series);
 app.use('/users', users);
 
 // Start Server

@@ -1,0 +1,18 @@
+
+{{#each books}}
+  <div class="card card-body mb-2">
+    <h3>{{title}} by {{author}}</h3> <a href="/books/edit/{{id}}">Edit</a>
+    <p>Date Finished: {{date}}</p>
+    <p>Rating: {{rating}} </p>
+    <p>{{review}}</p>
+    <form method="post" action="/books/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-link" value="Delete">
+    </form>
+  </div>
+  {{else}}
+    <div class="card card-body mb-2">
+      <p>You don't have any book reviews yet!</p>
+    </div>
+  {{/each}}
+  <p class="text-center"><a href="/books/add">Add a review.</a></p>

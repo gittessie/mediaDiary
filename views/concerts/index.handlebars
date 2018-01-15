@@ -1,0 +1,19 @@
+
+{{#each concerts}}
+  <div class="card card-body mb-2">
+    <h3>{{headliner}}</h3> <a href="/concerts/edit/{{id}}">Edit</a>
+    {{#if support}}<p>w/ {{support}}</p>{{/if}}
+    <p>{{venue}} {{date}}</p>
+    <p>Rating: {{rating}} </p>
+    <p>{{review}}</p>
+    <form method="post" action="/concerts/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-link" value="Delete">
+    </form>
+  </div>
+  {{else}}
+    <div class="card card-body mb-2">
+      <p>You haven't posted about any concerts yet!</p>
+    </div>
+  {{/each}}
+  <p class="text-center"><a href="/concerts/add">Add a post.</a></p>

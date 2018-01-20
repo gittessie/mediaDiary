@@ -1,10 +1,12 @@
-<div class="card card-body mb-2">
-  <h3>{{title}} {{#if releaseYear}}({{releaseYear}}){{/if}}</h3> <a href="/movies/edit/{{id}}">Edit</a>
-  <p>Date Watched: {{date}}</p>
-  <p>Rating: {{rating}} </p>
-  <p>{{review}}</p>
-  <form method="post" action="/movies/{{id}}?_method=DELETE">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class="btn btn-link" value="Delete">
-  </form>
+<div class="card card-body">
+  <h3>{{movie.title}} {{#if movie.releaseYear}}({{movie.releaseYear}}){{/if}}</h3>
+  <p>Date Watched: {{movie.date}}</p>
+  <p>Rating: {{movie.rating}} </p>
+  <p>{{movie.review}}</p>
 </div>
+
+<button type="button" class="btn btn-link"><a href="/movies/edit/{{movie.id}}">Edit</a></button>
+<form method="post" action="/movies/{{movie.id}}?_method=DELETE">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" class="btn btn-link" value="Delete">
+</form>

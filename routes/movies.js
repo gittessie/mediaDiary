@@ -24,6 +24,23 @@ router.get('/add', ensureAuthenticated, (req, res)=>{
 	res.render('movies/add');
 });
 
+// View Movie
+router.get('/movie/:id', ensureAuthenticated, (req, res)=> {
+	Movie.findOne({
+		_id: req.params.id
+	})
+	.then(movie => {
+    if(movie.user != req.user.id){
+      // this ain't your account waaaat
+      res.redirect('/movies');
+    } else {
+      res.render('movies/movie', {
+  			movie: movie
+  		});
+    }
+	});
+});
+
 // Edit Movie Form
 router.get('/edit/:id', ensureAuthenticated, (req, res)=> {
 	Movie.findOne({

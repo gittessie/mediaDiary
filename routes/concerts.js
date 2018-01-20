@@ -24,6 +24,23 @@ router.get('/add', ensureAuthenticated, (req, res)=>{
 	res.render('concerts/add');
 });
 
+// View Concert 
+router.get('/concert/:id', ensureAuthenticated, (req, res)=> {
+	Concert.findOne({
+		_id: req.params.id
+	})
+	.then(concert => {
+    if(concert.user != req.user.id){
+      // this ain't your account waaaat
+      res.redirect('/concerts');
+    } else {
+      res.render('concerts/concert', {
+  			concert: concert
+  		});
+    }
+	});
+});
+
 // Edit Concert Form
 router.get('/edit/:id', ensureAuthenticated, (req, res)=> {
 	Concert.findOne({

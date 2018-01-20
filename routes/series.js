@@ -24,6 +24,23 @@ router.get('/add', ensureAuthenticated, (req, res)=>{
 	res.render('series/add');
 });
 
+// View Series
+router.get('/series/:id', ensureAuthenticated, (req, res)=> {
+	Series.findOne({
+		_id: req.params.id
+	})
+	.then(series => {
+    if(series.user != req.user.id){
+      // this ain't your account waaaat
+      res.redirect('/series');
+    } else {
+      res.render('series/series', {
+  			series: series
+  		});
+    }
+	});
+});
+
 // Edit Series Form
 router.get('/edit/:id', ensureAuthenticated, (req, res)=> {
 	Series.findOne({

@@ -7,17 +7,15 @@
         <th scope="col">Venue</th>
         <th scope="col">Date</th>
         <th scope="col"></th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       {{#each plays}}
       <tr>
         <td>{{rating}}</td>
-        <td>{{title}}</td>
+        <td><a href="/plays/play/{{id}}">{{title}}</a></td>
         <td>{{venue}}</td>
         <td>{{date}}</td>
-        <td><button type="button" class="btn btn-link"><a href="/plays/edit/{{id}}">Edit</a></button></td>
         <td><form method="post" action="/plays/{{id}}?_method=DELETE">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-link" value="Delete">

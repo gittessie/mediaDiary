@@ -7,17 +7,15 @@
         <th scope="col">Author</th>
         <th scope="col">Date Read</th>
         <th scope="col"></th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       {{#each books}}
       <tr>
         <td>{{rating}}</td>
-        <td>{{title}}</td>
+        <td><a href="/books/book/{{id}}">{{title}}</a></td>
         <td>{{author}}</td>
         <td>{{date}}</td>
-        <td><button type="button" class="btn btn-link"><a href="/books/edit/{{id}}">Edit</a></button></td>
         <td><form method="post" action="/books/{{id}}?_method=DELETE">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-link" value="Delete">

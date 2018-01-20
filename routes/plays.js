@@ -24,6 +24,23 @@ router.get('/add', ensureAuthenticated, (req, res)=>{
 	res.render('plays/add');
 });
 
+// View Play
+router.get('/play/:id', ensureAuthenticated, (req, res)=> {
+	Play.findOne({
+		_id: req.params.id
+	})
+	.then(play => {
+    if(play.user != req.user.id){
+      // this ain't your account waaaat
+      res.redirect('/plays');
+    } else {
+      res.render('plays/play', {
+  			play: play
+  		});
+    }
+	});
+});
+
 // Edit Play Form
 router.get('/edit/:id', ensureAuthenticated, (req, res)=> {
 	Play.findOne({

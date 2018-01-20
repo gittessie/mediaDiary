@@ -41,6 +41,23 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=> {
 	});
 });
 
+// View Book 
+router.get('/book/:id', ensureAuthenticated, (req, res)=> {
+	Book.findOne({
+		_id: req.params.id
+	})
+	.then(book => {
+    if(book.user != req.user.id){
+      // this ain't your account waaaat
+      res.redirect('/books');
+    } else {
+      res.render('books/book', {
+  			book: book
+  		});
+    }
+	});
+});
+
 
 // Process Book Form
 router.post('/', ensureAuthenticated, (req, res)=>{

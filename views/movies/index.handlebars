@@ -7,17 +7,15 @@
       <th scope="col">Release Year</th>
       <th scope="col">Date Watched</th>
       <th scope="col"></th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     {{#each movies}}
     <tr>
       <td>{{rating}}</td>
-      <td>{{title}}</td>
+      <td><a href="/movies/movie/{{id}}">{{title}}</a></td>
       <td>{{releaseYear}}</td>
       <td>{{date}}</td>
-      <td><button type="button" class="btn btn-link"><a href="/movies/edit/{{id}}">Edit</a></button></td>
       <td><form method="post" action="/movies/{{id}}?_method=DELETE">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" class="btn btn-link" value="Delete">

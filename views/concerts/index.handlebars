@@ -6,16 +6,14 @@
         <th scope="col">Venue</th>
         <th scope="col">Date</th>
         <th scope="col"></th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       {{#each concerts}}
       <tr>
-        <td>{{headliner}}</td>
+        <td><a href="/concerts/concert/{{id}}">{{headliner}}</a></td>
         <td>{{venue}}</td>
         <td>{{date}}</td>
-        <td><button type="button" class="btn btn-link"><a href="/concerts/edit/{{id}}">Edit</a></button></td>
         <td><form method="post" action="/concerts/{{id}}?_method=DELETE">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-link" value="Delete">

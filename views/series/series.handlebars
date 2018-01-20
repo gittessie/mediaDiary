@@ -1,11 +1,13 @@
-<div class="card card-body mb-2">
-  <h3>{{title}}</h3> <a href="/series/edit/{{id}}">Edit</a>
-  {{#if season}}<p>Season: {{season}}</p>{{/if}}
-  <p>{{date}}</p>
-  <p>Rating: {{rating}} </p>
-  <p>{{review}}</p>
-  <form method="post" action="/series/{{id}}?_method=DELETE">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class="btn btn-link" value="Delete">
-  </form>
+<div class="card card-body">
+  <h3>{{series.title}}</h3>
+  {{#if series.season}}<p>Season: {{series.season}}</p>{{/if}}
+  <p>{{series.date}}</p>
+  <p>Rating: {{series.rating}} </p>
+  <p>{{series.review}}</p>
 </div>
+
+<button type="button" class="btn btn-link"><a href="/series/edit/{{series.id}}">Edit</a></button>
+<form method="post" action="/series/{{series.id}}?_method=DELETE">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" class="btn btn-link" value="Delete">
+</form>

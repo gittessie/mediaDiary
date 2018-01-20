@@ -1,10 +1,12 @@
-<div class="card card-body mb-2">
-  <h3>{{title}} by {{author}}</h3> <a href="/books/edit/{{id}}">Edit</a>
-  <p>Date Finished: {{date}}</p>
-  <p>Rating: {{rating}} </p>
-  <p>{{review}}</p>
-  <form method="post" action="/books/{{id}}?_method=DELETE">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class="btn btn-link" value="Delete">
-  </form>
+<div class="card card-body">
+  <h3>{{book.title}} by {{book.author}}</h3>
+  <p>Date Finished: {{book.date}}</p>
+  <p>Rating: {{book.rating}} </p>
+  <p>{{book.review}}</p>
 </div>
+
+<button type="button" class="btn btn-link"><a href="/books/edit/{{book.id}}">Edit</a></button>
+<form method="post" action="/books/{{book.id}}?_method=DELETE">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" class="btn btn-link" value="Delete">
+</form>

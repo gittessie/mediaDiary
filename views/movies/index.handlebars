@@ -1,18 +1,35 @@
+{{#if movies}}
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">Rating</th>
+      <th scope="col">Title</th>
+      <th scope="col">Release Year</th>
+      <th scope="col">Date Watched</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each movies}}
+    <tr>
+      <td>{{rating}}</td>
+      <td>{{title}}</td>
+      <td>{{releaseYear}}</td>
+      <td>{{date}}</td>
+      <td><button type="button" class="btn btn-link"><a href="/movies/edit/{{id}}">Edit</a></button></td>
+      <td><form method="post" action="/movies/{{id}}?_method=DELETE">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-link" value="Delete">
+      </form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+<div class="card card-body mb-2">
+  <p>You don't have any movie reviews yet!</p>
+</div>
+{{/if}}
 
-{{#each movies}}
-  <div class="card card-body mb-2">
-    <h3>{{title}} {{#if releaseYear}}({{releaseYear}}){{/if}}</h3> <a href="/movies/edit/{{id}}">Edit</a>
-    <p>Date Watched: {{date}}</p>
-    <p>Rating: {{rating}} </p>
-    <p>{{review}}</p>
-    <form method="post" action="/movies/{{id}}?_method=DELETE">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-link" value="Delete">
-    </form>
-  </div>
-  {{else}}
-    <div class="card card-body mb-2">
-      <p>You don't have any movie reviews yet!</p>
-    </div>
-  {{/each}}
-  <p class="text-center"><a href="/movies/add">Add a review.</a></p>
+<p class="text-center"><a href="/movies/add">Add a review.</a></p>

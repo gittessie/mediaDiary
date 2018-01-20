@@ -1,0 +1,11 @@
+<div class="card card-body mb-2">
+  <h3>{{title}}</h3> <a href="/plays/edit/{{id}}">Edit</a>
+  <p>{{venue}}</p>
+  <p>{{date}}</p>
+  <p>Rating: {{rating}} </p>
+  <p>{{review}}</p>
+  <form method="post" action="/plays/{{id}}?_method=DELETE">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" class="btn btn-link" value="Delete">
+  </form>
+</div>

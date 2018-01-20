@@ -1,19 +1,35 @@
-
-{{#each plays}}
-  <div class="card card-body mb-2">
-    <h3>{{title}}</h3> <a href="/plays/edit/{{id}}">Edit</a>
-    <p>{{venue}}</p>
-    <p>{{date}}</p>
-    <p>Rating: {{rating}} </p>
-    <p>{{review}}</p>
-    <form method="post" action="/plays/{{id}}?_method=DELETE">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-link" value="Delete">
-    </form>
-  </div>
+{{#if plays}}
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Rating</th>
+        <th scope="col">Title</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Date</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each plays}}
+      <tr>
+        <td>{{rating}}</td>
+        <td>{{title}}</td>
+        <td>{{venue}}</td>
+        <td>{{date}}</td>
+        <td><button type="button" class="btn btn-link"><a href="/plays/edit/{{id}}">Edit</a></button></td>
+        <td><form method="post" action="/plays/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" class="btn btn-link" value="Delete">
+        </form></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
   {{else}}
-    <div class="card card-body mb-2">
-      <p>You haven't posted about any plays or musicals yet!</p>
-    </div>
-  {{/each}}
-  <p class="text-center"><a href="/plays/add">Add a post.</a></p>
+  <div class="card card-body mb-2">
+    <p>You haven't posted about any plays or musicals yet!</p>
+  </div>
+{{/if}}
+
+<p class="text-center"><a href="/plays/add">Add a post.</a></p>

@@ -1,19 +1,35 @@
-
-{{#each series}}
-  <div class="card card-body mb-2">
-    <h3>{{title}}</h3> <a href="/series/edit/{{id}}">Edit</a>
-    {{#if season}}<p>Season: {{season}}</p>{{/if}}
-    <p>{{date}}</p>
-    <p>Rating: {{rating}} </p>
-    <p>{{review}}</p>
-    <form method="post" action="/series/{{id}}?_method=DELETE">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-link" value="Delete">
-    </form>
-  </div>
+{{#if series}}
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Rating</th>
+        <th scope="col">Title</th>
+        <th scope="col">Season</th>
+        <th scope="col">Date</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each series}}
+      <tr>
+        <td>{{rating}}</td>
+        <td>{{title}}</td>
+        <td>{{season}}</td>
+        <td>{{date}}</td>
+        <td><button type="button" class="btn btn-link"><a href="/series/edit/{{id}}">Edit</a></button></td>
+        <td><form method="post" action="/series/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" class="btn btn-link" value="Delete">
+        </form></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
   {{else}}
-    <div class="card card-body mb-2">
-      <p>You haven't posted about any tv shows yet!</p>
-    </div>
-  {{/each}}
-  <p class="text-center"><a href="/series/add">Add a post.</a></p>
+  <div class="card card-body mb-2">
+    <p>You haven't posted about any tv shows yet!</p>
+  </div>
+{{/if}}
+
+<p class="text-center"><a href="/series/add">Add a post.</a></p>
